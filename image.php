@@ -12,10 +12,14 @@ $filename = $_GET['file'];
 $path = $folder . '/' . $filename;
 
 try{
-    
-    $image = new Imagick($path);
+    if(isset($_GET['thumbnail'])) throw new Exception('Thumbnail');
+    $image = new Imagick($filename);
     //$image->adaptiveResizeImage(1024,768);
     //test
+    
+    if(isset($_GET['thumbnail'])){
+        $image->adaptiveresizeimage(150, 150, true);
+    }
     $image->borderImage(new ImagickPixel("red"), 5, 5);
     header('Content-type: image/' . $type);
     
