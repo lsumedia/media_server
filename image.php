@@ -6,8 +6,6 @@ error_reporting(-1);
 
 $type = $_GET['type'];
 
-
-
 $folder = './files';
 $filename = $_GET['file'];
 
@@ -17,8 +15,11 @@ try{
     
     $image = new Imagick($path);
     //$image->adaptiveResizeImage(1024,768);
+    //test
     $image->borderImage(new ImagickPixel("red"), 5, 5);
     header('Content-type: image/' . $type);
+    
+    echo $image;
     
 }catch(Exception $e){
     
@@ -26,5 +27,3 @@ try{
     echo $e->getMessage();
     
 }
-
-echo $image;

@@ -6,3 +6,5 @@
  * and open the template in the editor.
  */
 
+require_once 'config.php';
+require_once 'app/authenticator.php';
