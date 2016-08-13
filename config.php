@@ -6,3 +6,6 @@
  * and open the template in the editor.
  */
 
+$image_formats = ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'ico', 'svg'];
+$audio_formats = ['mp3', 'm4a', 'aac', 'wav', 'flac', 'wma'];
+$video_formats = ['mp4', 'mov', 'avi', 'wmv', 'webm', 'oggv'];

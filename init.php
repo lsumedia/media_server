@@ -8,3 +8,4 @@
 
 require_once 'config.php';
 require_once 'app/authenticator.php';
+require_once 'app/f_getfiles.php';
