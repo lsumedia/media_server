@@ -1,0 +1,7 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase "/media_server"
+RewriteRule ^([^.]+)\.png$ image.php?file=$1.png&type=png [L,NC]
+RewriteRule ^([^.]+)\.jpg$ image.php?file=$1.jpg&type=jpg [L,NC]
+RewriteRule ^([^.]+)\.jpeg$ image.php?file=$1.jpeg&type=jpg [L,NC]
+RewriteRule ^([^.]+)\.gif$ image.php?file=$1.gif&type=gif [L,NC]
