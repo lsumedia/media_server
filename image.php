@@ -38,6 +38,18 @@ try{
     
     echo $image;
     
+    //TODO: New process
+    
+    //Read file name
+    
+    //Look for contents folder
+    
+    //Read properties.json
+    
+    //Get or generate the requested image
+    
+    //Update properties.json
+    
 }catch(Exception $e){
     
     header('Content-type: text/html');

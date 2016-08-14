@@ -44,7 +44,6 @@ class file_list{
             
             if(in_array($file_extension, $image_formats)){
                 //Images
-                
                 $file_list[] = new file_listing($filename, $relative_filename . '?width=150', 'image/' . $file_extension);
                 
             }else if(in_array($file_extension, $audio_formats)){

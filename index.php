@@ -48,7 +48,7 @@ if(isset($_GET['key'])){
                     <?php
                     foreach(file_list::get_all() as $file){
                         echo "<div>";
-                        echo "<img src=\"{$file->thumbnail}\"/>";
+                        echo "<img class=\"materialboxed\" src=\"{$file->thumbnail}\"/>";
                         echo "<p><a href=\"files/{$file->name}\">{$file->name}</a></p>";
                         echo "</div>";
                     }
