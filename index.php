@@ -45,7 +45,14 @@ if(isset($_GET['key'])){
             </div>
             <div class="row">
                 <div class="col s12">
-                    <?php var_dump(file_list::get_all()); ?>
+                    <?php
+                    foreach(file_list::get_all() as $file){
+                        echo "<div>";
+                        echo "<img src=\"{$file->thumbnail}\"/>";
+                        echo "<p><a href=\"files/{$file->name}\">{$file->name}</a></p>";
+                        echo "</div>";
+                    }
+                    ?>
                 </div>
             </div>
         </main>

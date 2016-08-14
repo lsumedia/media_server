@@ -20,7 +20,18 @@ try{
     
     if(isset($_GET['width'])){
         $newwidth = ($_GET['width'] < 5000)? $_GET['width'] : 5000;
-        $image->adaptiveresizeimage($newwidth, $newwidth, true);
+        if($type == 'gif'){
+            $image = $image->coalesceimages();
+            foreach ($image as $frame) { 
+                //$frame->cropImage($crop_w, $crop_h, $crop_x, $crop_y); 
+                //$frame->thumbnailImage($size_w, $size_h); 
+                //$frame->setImagePage($size_w, $size_h, 0, 0); 
+                $frame->adaptiveresizeimage($newwidth, $newwidth, true);
+            } 
+            $image = $image->deconstructimages(); 
+        }else{
+            $image->adaptiveresizeimage($newwidth, $newwidth, true);
+        }
     }
     
     header('Content-type: image/' . $type);
