@@ -3,7 +3,7 @@ RewriteEngine On
 RewriteBase "/media_server"
 RewriteRule ^([^.]+)\.png?thumbnail$ image.php?file=$1.png&type=png&thumbnail [L,NC]
 RewriteRule files/^([^.]+)\.png$ image.php?file=$1.png&type=png [L,NC]
-RewriteRule ^(files/[^.]+)\.jpg?thumbnail$ image.php?file=$1.jpg&type=jpg&thumbnail [L,NC]
+RewriteRule ^(files/[^.]+)\.jpg(?width=([^.]+))?$ image.php?file=$1.jpg&type=jpg&width=$2 [L,NC,QSA]
 RewriteRule ^(files/[^.]+)\.jpg$ image.php?file=$1.jpg&type=jpg [L,NC]
 RewriteRule files/^([^.]+)\.jpeg$ image.php?file=$1.jpeg&type=jpg [L,NC]
 RewriteRule files/^([^.]+)\.gif$ image.php?file=$1.gif&type=gif [L,NC]

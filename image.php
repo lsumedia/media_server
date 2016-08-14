@@ -12,7 +12,8 @@ $filename = $_GET['file'];
 $path = $folder . '/' . $filename;
 
 try{
-    if(isset($_GET['thumbnail'])) throw new Exception('Thumbnail');
+    if(isset($_GET['width'])) throw new Exception('resize!');
+    
     $image = new Imagick($filename);
     //$image->adaptiveResizeImage(1024,768);
     //test
