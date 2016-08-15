@@ -6,6 +6,10 @@
  * and open the template in the editor.
  */
 
+ini_set("display_errors", 1);
+ini_set("track_errors", 1);
+ini_set("html_errors", 1);
+error_reporting(E_ALL);
 
 require('init.php');
 
@@ -48,8 +52,8 @@ if(isset($_GET['key'])){
                     <?php
                     foreach(file_list::get_all() as $file){
                         echo "<div>";
-                        echo "<img class=\"materialboxed\" src=\"{$file->thumbnail}\"/>";
-                        echo "<p><a href=\"files/{$file->name}\">{$file->name}</a></p>";
+                        echo "<img class=\"materialboxed\" src=\"{$file->properties->thumbnail}\"/>";
+                        echo "<p><a href=\"files/{$file->properties->name}\">{$file->properties->name}</a></p>";
                         echo "</div>";
                     }
                     ?>
