@@ -1,0 +1,14 @@
+{
+    "id":"a5bb5e",
+    "name": "example",
+    "type":"image/jpg",
+    "original":"original.jpg",
+    "thumbnail":"thumb.png",
+    "width":2048,
+    "height":1365,
+    "description":"",
+    "sizes":{
+        "500x500":"500.jpg",
+        "300x300":"300.jpg"
+    }
+}
