@@ -3,12 +3,12 @@
     "name": "example",
     "type":"image/jpg",
     "original":"original.jpg",
-    "thumbnail":"original.jpg?width=150",
+    "thumbnail":"?width=150",
     "width":2048,
     "height":1365,
     "description":"",
     "sizes":{
-        "500x500":"500.jpg",
-        "300x300":"300.jpg"
+        "500":"500.jpg",
+        "300":"300.jpg"
     }
 }

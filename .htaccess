@@ -1,7 +1,9 @@
 Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteBase "/media_server"
-RewriteRule ^(files/[^.]+)\.jpg(\?[.*]+)?$ image.php?file=$1.jpg&type=jpg&$2 [L,NC,QSA]
-RewriteRule ^(files/[^.]+)\.jpeg(\?[.*]+)?$ image.php?file=$1.jpg&type=jpg&$2 [L,NC,QSA]
-RewriteRule ^(files/[^.]+)\.png(\?[.*]+)?$ image.php?file=$1.png&type=png&$2 [L,NC,QSA]
-RewriteRule ^(files/[^.]+)\.gif(\?[.*]+)?$ image.php?file=$1.gif&type=gif&$2 [L,NC,QSA]
+RewriteRule ^files/([a-z0-9]+)\.(jpg|jpeg|png|gif)(\?[.*]+)?$ image.php?file=$1.$2&$3 [L,NC,QSA]
+RewriteRule ^files/([a-z0-9]+)\.(a-zA-z0-9)(\?[.*]+)?$ files/$1/original.$2&$3 [L,NC,QSA]
+##RewriteRule ^(files/[^.]+)\.jpg(\?[.*]+)?$ image.php?file=$1.jpg&type=jpg&$2 [L,NC,QSA]
+##RewriteRule ^(files/[^.]+)\.jpeg(\?[.*]+)?$ image.php?file=$1.jpg&type=jpg&$2 [L,NC,QSA]
+##RewriteRule ^(files/[^.]+)\.png(\?[.*]+)?$ image.php?file=$1.png&type=png&$2 [L,NC,QSA]
+##RewriteRule ^(files/[^.]+)\.gif(\?[.*]+)?$ image.php?file=$1.gif&type=gif&$2 [L,NC,QSA]

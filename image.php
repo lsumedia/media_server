@@ -1,40 +1,72 @@
 <?php
-/*ini_set('display_errors',1);
+/*
+ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 */
-
-$type = $_GET['type'];
-
-$folder = './files';
+$files_folder = 'files';
 $filename = $_GET['file'];
 
-$path = $folder . '/' . $filename;
+$code = explode('.',$filename)[0];
+
+//Read properties.json
+$folder_path = $files_folder . '/' . $code;
+$prop_path = $folder_path . '/properties.json';
+$prop_handle = fopen($prop_path, 'r');
+$properties = json_decode(stream_get_contents($prop_handle));
+fclose($prop_handle);
+
+$original = $properties->original;
+$original_path = $folder_path . '/' . $original;
 
 try{
     //if(isset($_GET['width'])) throw new Exception('resize!');
     
-    $image = new Imagick($filename);
+     if(isset($_GET['width'])){
+        $width = $_GET['width'];
+        $sizes = (array) $properties->sizes;
+        
+        /*
+        print_r($sizes);
+            var_dump($sizes[$width]);
+            echo $sizes[500];
+            
+            throw new Exception("end");
+        */
+        if($sizes[$width]){
+            
+            
+            $version_path = $folder_path . '/' . $sizes[$width];
+            $image = new Imagick($version_path);
+        
+            
+        }else{            
+            
+            $image = new Imagick($original_path);
+            
+            $newwidth = ($_GET['width'] < 5000)? $_GET['width'] : 5000;
+            
+            if($properties->type == 'image/gif'){
+                $image = $image->coalesceimages();
+                foreach ($image as $frame){ 
+                    //$frame->cropImage($crop_w, $crop_h, $crop_x, $crop_y); 
+                    //$frame->thumbnailImage($size_w, $size_h); 
+                    //$frame->setImagePage($size_w, $size_h, 0, 0); 
+                    $frame->adaptiveresizeimage($newwidth, $newwidth, true);
+                } 
+                $image = $image->deconstructimages(); 
+            }else{
+                $image->adaptiveresizeimage($newwidth, $newwidth, true);
+            }
+        }
+      
+    }else{
+        $image = new Imagick($original_path);
+    }
     //$image->adaptiveResizeImage(1024,768);
     //test
     
-    if(isset($_GET['width'])){
-        $newwidth = ($_GET['width'] < 5000)? $_GET['width'] : 5000;
-        if($type == 'gif'){
-            $image = $image->coalesceimages();
-            foreach ($image as $frame) { 
-                //$frame->cropImage($crop_w, $crop_h, $crop_x, $crop_y); 
-                //$frame->thumbnailImage($size_w, $size_h); 
-                //$frame->setImagePage($size_w, $size_h, 0, 0); 
-                $frame->adaptiveresizeimage($newwidth, $newwidth, true);
-            } 
-            $image = $image->deconstructimages(); 
-        }else{
-            $image->adaptiveresizeimage($newwidth, $newwidth, true);
-        }
-    }
-    
-    header('Content-type: image/' . $type);
+    header('Content-type: ' . $properties->type);
     
     echo $image;
     

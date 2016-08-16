@@ -5,11 +5,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-ini_set("display_errors", 1);
-ini_set("track_errors", 1);
-ini_set("html_errors", 1);
-error_reporting(E_ALL);
+if(isset($_GET['debug'])){
+    ini_set("display_errors", 1);
+    ini_set("track_errors", 1);
+    ini_set("html_errors", 1);
+    error_reporting(E_ALL);
+}
 
 require('init.php');
 
@@ -52,8 +53,8 @@ if(isset($_GET['key'])){
                     <?php
                     foreach(file_list::get_all() as $file){
                         echo "<div>";
-                        echo "<img class=\"materialboxed\" src=\"{$file->properties->thumbnail}\"/>";
-                        echo "<p><a href=\"files/{$file->properties->name}\">{$file->properties->name}</a></p>";
+                        echo "<img width=\"150\" class=\"materialboxed\" src=\"files/{$file->properties->id}.{$file->extension}?width=150\"/>";
+                        echo "<p><a href=\"files/{$file->properties->id}/{$file->properties->original}\">{$file->properties->name}</a></p>";
                         echo "</div>";
                     }
                     ?>
