@@ -3,7 +3,7 @@
     "name": "example",
     "type":"image/jpg",
     "original":"original.jpg",
-    "thumbnail":"?width=150",
+    "thumbnail":"original.jpg",
     "width":2048,
     "height":1365,
     "description":"",

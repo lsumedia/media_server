@@ -44,20 +44,27 @@ if(isset($_GET['key'])){
             </div>
         </nav>
         
-        <main id="main" class="container">
+        <main id="main">
             <div class="row">
-                <button class="btn" onclick="$('#filemodal').openModal();">Add files</button>
-            </div>
-            <div class="row">
-                <div class="col s12">
+                <div class="col s12 m8 l9">
+                    <div class="container">
+                    <button class="btn" onclick="$('#filemodal').openModal();">Add files</button>
+
                     <?php
                     foreach(file_list::get_all() as $file){
-                        echo "<div>";
-                        echo "<img width=\"150\" class=\"materialboxed\" src=\"files/{$file->properties->id}.{$file->extension}?width=150\"/>";
-                        echo "<p><a href=\"files/{$file->properties->id}/{$file->properties->original}\">{$file->properties->name}</a></p>";
+                        $id = $file->properties->id;
+                        echo "<div onclick=\"fileinfo.open({$id});\">";
+                        echo "<img width=\"150\" class=\"not-materialboxed\" src=\"files/{$id}/{$file->properties->thumbnail}\"/>";
+                        echo "<p>{$file->properties->name}</p>";
                         echo "</div>";
                     }
                     ?>
+                    </div>
+                </div>
+                <div class="col s12 m4 l3">
+                    <div class="container">
+                        <h4>Upload a file</h4>
+                    </div>
                 </div>
             </div>
         </main>

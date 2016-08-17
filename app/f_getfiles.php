@@ -51,15 +51,12 @@ class file_list{
         $file_dir = 'files/' . $code;
         
         try{
-            $root_path = $file_dir;
-            if(is_dir($root_path)){
                 
-                $prop_location = $root_path . '/properties.json';
-                $prop_handle = fopen($prop_location, 'r');
-                $properties = json_decode(fread($prop_handle,filesize($prop_location)));
-                fclose($prop_handle);
-                
-            }
+            $prop_location = $file_dir . '/properties.json';
+            $prop_handle = fopen($prop_location, 'r');
+            $properties = json_decode(fread($prop_handle,filesize($prop_location)));
+            fclose($prop_handle);
+
         }catch(Exception $e){
             echo $e->getMessage();
         }
