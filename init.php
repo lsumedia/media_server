@@ -7,5 +7,12 @@
  */
 
 require_once 'config.php';
-require_once 'app/authenticator.php';
-require_once 'app/f_getfiles.php';
+
+$dir = 'app';
+$comp_includes = scandir($dir);
+foreach($comp_includes as $comp_ifile){
+    if(strpos($comp_ifile, '.php') !== false){
+        //echo $dir . '/' . $comp_ifile;
+        include($dir . '/' . $comp_ifile);
+    }
+}

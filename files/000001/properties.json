@@ -1,8 +1,8 @@
 {
     "id":"000001",
     "name": "example",
-    "type":"image/jpg",
-    "original":"original.jpg",
+    "type":"image/gif",
+    "original":"original.gif",
     "thumbnail":"",
     "width":2048,
     "height":1365,

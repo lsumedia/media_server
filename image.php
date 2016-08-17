@@ -62,6 +62,12 @@ try{
       
     }else{
         $image = new Imagick($original_path);
+        
+        if($properties->type == 'image/gif'){
+            $image = $image->coalesceimages();
+               
+            $image = $image->deconstructimages();
+        }
     }
     //$image->adaptiveResizeImage(1024,768);
     //test

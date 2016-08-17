@@ -45,4 +45,25 @@ class file_list{
         return $file_entries;
 
     }
+    
+    static function get_one($code){
+        
+        $file_dir = 'files/' . $code;
+        
+        try{
+            $root_path = $file_dir;
+            if(is_dir($root_path)){
+                
+                $prop_location = $root_path . '/properties.json';
+                $prop_handle = fopen($prop_location, 'r');
+                $properties = json_decode(fread($prop_handle,filesize($prop_location)));
+                fclose($prop_handle);
+                
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+        
+        return $properties;
+    }
 }
