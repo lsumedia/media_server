@@ -1,9 +1,9 @@
 {
     "id":"000001",
-    "name": "example",
+    "name": "gif test",
     "type":"image/gif",
     "original":"original.gif",
-    "thumbnail":"",
+    "thumbnail":"original.gif",
     "width":2048,
     "height":1365,
     "description":"",
