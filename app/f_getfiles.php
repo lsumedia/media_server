@@ -55,6 +55,8 @@ class file_list{
             $prop_location = $file_dir . '/properties.json';
             $prop_handle = fopen($prop_location, 'r');
             $properties = json_decode(fread($prop_handle,filesize($prop_location)));
+            $properties->extension = explode('/',$properties->type)[1];
+
             fclose($prop_handle);
 
         }catch(Exception $e){

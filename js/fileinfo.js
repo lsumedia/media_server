@@ -5,23 +5,33 @@
  */
 
 
-function fileInfo(element){
+function update_info(id){
     
-    this.id = "";
+    var name = document.getElementById('info_name');
+    var type = document.getElementById('info_type');
+    var permalink = document.getElementById('info_permalink');
+    var name = document.getElementById('info_name');
+    var thumb = document.getElementById('info_thumb');
     
-    this.obj = document.createObject('div');
-    body.appendChild(this.obj);
     
-    this.open = function($id){
-        
-    }
     
-    this.close = function(){
-        
-    }
-    
-    this.uploadDialog = function(){
-        
-    }
+     $.ajax({
+         url: "details.php?id=" + id,
+         method: 'GET',
+         contentType: 'application/json',
+         success: function(result){
+            
+            data = JSON.parse(result);
+            
+            console.log(result);
+            
+            permalink.value = window.location.href + "files/" + id + "." + data['extension'];
+            type.value = data['type'];
+            thumb.src = 'files/' + id + '/' + data['thumbnail'];
+            name.innerHTML = data['name'];
+            
+            
+        }
+    });
     
 }
