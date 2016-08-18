@@ -10,11 +10,35 @@ class file_listing{
     
     public function __construct($properties){
        $this->properties = $properties;
-       $this->extension = explode('/',$properties->type)[1];
+       $this->extension = $properties->extension;
     }
 }
 
 class file_list{
+    
+    //Get list of all 
+    static function get_ids(){
+        $file_dir = './files';
+
+        $data_folders = scandir($file_dir);
+
+        $valid_entries = [];
+        
+        //Remove . and ..
+        array_shift($data_folders);
+        array_shift($data_folders);
+        
+        foreach($data_folders as $folder){
+            
+            $root_path = $file_dir . '/' . $folder;
+            if(is_dir($root_path)){
+               $valid_entries[] = $folder;
+                
+            }
+        }
+        
+        return $valid_entries;
+    }
     
     static function get_all(){
         
@@ -55,7 +79,6 @@ class file_list{
             $prop_location = $file_dir . '/properties.json';
             $prop_handle = fopen($prop_location, 'r');
             $properties = json_decode(fread($prop_handle,filesize($prop_location)));
-            $properties->extension = explode('/',$properties->type)[1];
 
             fclose($prop_handle);
 

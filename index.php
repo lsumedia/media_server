@@ -107,7 +107,7 @@ if(isset($_GET['key'])){
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12 m4 l2">
-                        <img src="files/a5bb5e/original.jpg" id="info_thumb" alt="File preview" style="width:100%;"/>
+                        <img class="materialboxed" src="files/a5bb5e/original.jpg" id="info_thumb" alt="File preview" style="width:100%;" width="100%"/>
                     </div>
                     <div class="col s12 m8 l10">
                         <h4 id="info_name">original.jpg</h4>
@@ -123,12 +123,12 @@ if(isset($_GET['key'])){
                         </div>
                          <div class="row">
                             <div class="col s12 l9">
-                                <label for="info_size">File dimensions</label>
-                                <input id="info_size" readonly value="" />
+                                <label for="info_desc">Description</label>
+                                <input id="info_desc" readonly value="" />
                             </div>
                             <div class="col s12 l3">
-                                <label for="info_permalink">File size</label>
-                                <input id="info_permalink" readonly value="249300" />
+                                <label for="info_size">File size</label>
+                                <input id="info_size" readonly value="" />
                             </div>
                         </div>
                     </div>

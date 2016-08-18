@@ -12,8 +12,10 @@ function update_info(id){
     var permalink = document.getElementById('info_permalink');
     var name = document.getElementById('info_name');
     var thumb = document.getElementById('info_thumb');
+    var size = document.getElementById('info_size');
+    var description = document.getElementById('info_desc');
     
-    
+    var images = ['jpg','jpeg','png','gif'];
     
      $.ajax({
          url: "details.php?id=" + id,
@@ -25,12 +27,20 @@ function update_info(id){
             
             console.log(result);
             
-            permalink.value = window.location.href + "files/" + id + "." + data['extension'];
+            
+            if(images.indexOf(data['extension']) == -1){
+                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                thumb.src = 'files/' + id + '/' + data['original'];
+
+            }else{
+                permalink.value = window.location.href + "files/" + id + "." + data['extension'];
+                thumb.src = 'files/' + id + '/' + data['thumbnail'];
+            }
             type.value = data['type'];
-            thumb.src = 'files/' + id + '/' + data['thumbnail'];
             name.innerHTML = data['name'];
-            
-            
+            size.value = data['size'] + ' bytes';
+            description.value = data['description'];
+            $('.materialboxed').materialbox();
         }
     });
     

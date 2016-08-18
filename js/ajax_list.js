@@ -32,36 +32,21 @@ function list_get_data(dataLocation){
         return JSON.parse(string);
 }
 function rowCode(row){
-    var html = '';
-    if(row['action']){
-        var action = row['action'];
+    
+    if(row['properties'] != null){
+
+        var id = row['properties']['id'];
+
+        var html = '<div class="col s2 card z-depth-0" onclick="$(\'#infomodal\').openModal(); update_info(\'' + row['properties']['id'] +'\');">';
+
+        html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + "/" + row['properties']['thumbnail'] + "\"></div>";
+
+        html += '<div class="card-title truncate">' + row['properties']['name'] + '</div>';
+        html += "</div>";
+        
     }else{
-        var action = false;
+        html = "";
     }
-    if(row['onclick']){
-        html += '<tr onclick="' + row['onclick'] + '">';
-    }else{
-        html += '<tr>';
-    }
-    for(var key in row){
-        if(key != 'onclick' && key != 'action'){
-            if(action){
-                html += '<td><a href="' + action + '">' + row[key] + "</a></td>";
-            }else{    
-                html += '<td><a>' + row[key] + "</a></td>";
-            }
-        }
-    }
-    html += "</tr>";
-    
-    var id = row['properties']['id'];
-    
-    var html = '<div class="col s2 card z-depth-0" onclick="$(\'#infomodal\').openModal(); update_info(\'' + row['properties']['id'] +'\');">';
-    
-    html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + "/" + row['properties']['thumbnail'] + "\"></div>";
-    
-    html += '<div class="card-title">' + row['properties']['name'] + '</div>';
-    html += "</div>";
     return html;
 }
         
