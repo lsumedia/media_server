@@ -61,8 +61,9 @@ class file_list{
                 $prop_handle = fopen($prop_location, 'r');
                 $properties = json_decode(fread($prop_handle,filesize($prop_location)));
                 fclose($prop_handle);
-                $file_entries[] = new file_listing($properties);
-                
+                if($properties->size > 0){
+                    $file_entries[] = new file_listing($properties);
+                }
             }
         }
         

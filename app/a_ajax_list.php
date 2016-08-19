@@ -34,7 +34,7 @@ class ajax_list{
     
     public function display(){
         echo "<!-- ajaxList $this->id -->", PHP_EOL;
-        $listStyle = (count($this->objects) > 10)? 'longList' : 'shortList';
+        $listStyle = (count($this->objects) > 50)? 'longList' : 'shortList';
         echo "<div class='form listWrapper $listStyle'>", PHP_EOL;
         $data_id = $this->id . '_data';
         $body_id = $this->id . '_body';
@@ -45,9 +45,9 @@ class ajax_list{
         $count = count($this->objects);
         echo "<div class=\"listtitle\">$this->title</div>", PHP_EOL;
         echo "<div class=\"row\">";
-        if($count > 10){
+        if($count > 50){
             $back; $next;
-            $numpages = floor(($count-1) / 10 ) + 1;
+            $numpages = floor(($count-1) / 50 ) + 1;
             $back_id = $this->id . '_back';
             $next_id = $this->id . '_next';
             echo "<div class=\"col-lg-9 col-sm-12\"><input onkeyup=\"list_search('$this->id','$data_id',this.value);\" placeholder='Search' type='text' id='$search_id' class='form-control' /></div>";

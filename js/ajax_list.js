@@ -39,8 +39,16 @@ function rowCode(row){
 
         var html = '<div class="col s2 card z-depth-0" onclick="$(\'#infomodal\').openModal(); update_info(\'' + row['properties']['id'] +'\');">';
 
-        html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + "/" + row['properties']['thumbnail'] + "\"></div>";
-
+        if(row['properties']['type'].indexOf('image') != -1){
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + "/" + row['properties']['thumbnail'] + "\"></div>";
+        }else if(row['properties']['type'].indexOf('audio') != -1){
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/music_note.svg\"></div>";            
+        }else if(row['properties']['type'].indexOf('video') != -1){
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/videocam.svg\"></div>";       
+        }else{
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/document.svg\"></div>";
+        }
+        
         html += '<div class="card-title truncate">' + row['properties']['name'] + '</div>';
         html += "</div>";
         
@@ -54,14 +62,14 @@ function list_change_page(listId,dataLocation,pageNumber){
     var data = list_get_data(dataLocation);
     var html = "";
 
-    var numberOfPages = Math.ceil((data.length)/10);
+    var numberOfPages = Math.ceil((data.length)/50);
 
     var next = pageNumber + 1;
     var prev = pageNumber - 1;
 
-    var offset = 10 * (pageNumber);
+    var offset = 50 * (pageNumber);
 
-    for(var i=offset; i < offset + 10; i++){
+    for(var i=offset; i < offset + 50; i++){
         var row = data[i];
         if(row){
             html += rowCode(row);
