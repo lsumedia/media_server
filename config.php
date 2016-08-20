@@ -14,4 +14,5 @@ $banned_formats = ['php','exe','msi','cshtml'];
 
 $config = [
     'require_auth' => false,
+    'debug' => false,
 ];
