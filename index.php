@@ -14,7 +14,9 @@ if(isset($_GET['debug'])){
 
 require('init.php');
 
-$auth = new authenticator();
+if($config['require_auth'] == true){
+    $auth = new authenticator();
+}
 
 if(isset($_GET['key'])){
     header('location:.');   

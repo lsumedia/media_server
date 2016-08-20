@@ -7,7 +7,7 @@
  */
 
 function getRandomHex($num_bytes=4) {
-    return bin2hex(openssl_random_pseudo_bytes($num_bytes));
+    return bin2hex(substr(sha1(rand()),0,$num_bytes));
 }
 
 class file_properties{
