@@ -79,7 +79,7 @@ if(isset($_GET['key'])){
             </div>
         </main>
         
-        <div id="uploadmodal" class="modal bottom-sheet">
+        <div id="uploadmodal" class="modal ">
             <div class="modal-content">
                 <form action="upload.php" method="POST" enctype="multipart/form-data" id="upload_form">
                     <div class="file-field input-field">    
@@ -92,7 +92,7 @@ if(isset($_GET['key'])){
                         </div>
                     </div>
                     <div class="input-field">
-                        <label for="upload_desc">Title</label>
+                        <label for="upload_desc">Title (optional)</label>
                         <input type="text" name="title" />
                     </div>
                     <div class="input-field">
