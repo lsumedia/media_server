@@ -7,7 +7,7 @@
  */
 
 function getRandomHex($num_bytes=4) {
-    return bin2hex(openssl_random_pseudo_bytes($num_bytes));
+    return bin2hex(substr(md5(rand(),true),0,$num_bytes));
 }
 
 class file_properties{
@@ -20,7 +20,7 @@ class file_properties{
         
         while($found == false){
         
-            $new = getRandomHex();
+            $new = getRandomHex(3);
         
             if(in_array($new, $existing_ids) == false){
                 $found = true;
