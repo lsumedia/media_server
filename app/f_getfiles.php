@@ -67,6 +67,13 @@ class file_list{
             }
         }
         
+        function cmp($a, $b)
+        {
+            return ($a->properties->timestamp < $b->properties->timestamp);
+        }
+
+        usort($file_entries, "cmp");
+        
         return $file_entries;
 
     }

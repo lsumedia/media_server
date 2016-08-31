@@ -48,6 +48,7 @@ class file_properties{
             "description" => $description,
             "extension" => $extension,
             "timestamp" => time(),
+            "date" => date('Y-m-d H:m')
         ];
         
         return $properties;

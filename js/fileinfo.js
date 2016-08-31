@@ -14,6 +14,8 @@ function update_info(id){
     var thumb = document.getElementById('info_thumb');
     var size = document.getElementById('info_size');
     var description = document.getElementById('info_desc');
+    var date = document.getElementById('info_date');
+    var delete_link = document.getElementById('delete_url');
     
     var images = ['jpg','jpeg','png','gif'];
     
@@ -40,6 +42,8 @@ function update_info(id){
             name.innerHTML = data['name'];
             size.value = data['size'] + ' bytes';
             description.value = data['description'];
+            date.value = data['date'];
+            delete_link.href = 'delete.php?id=' + data['id'];
             $('.materialboxed').materialbox();
             $('#infomodal').openModal(); 
         }

@@ -42,11 +42,11 @@ function rowCode(row){
         if(row['properties']['type'].indexOf('image') != -1){
             html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + "/" + row['properties']['thumbnail'] + "\"></div>";
         }else if(row['properties']['type'].indexOf('audio') != -1){
-            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/music_note.svg\"></div>";            
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign file-icon\" src=\"res/music_note.svg\"></div>";            
         }else if(row['properties']['type'].indexOf('video') != -1){
-            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/videocam.svg\"></div>";       
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign file-icon\" src=\"res/videocam.svg\"></div>";       
         }else{
-            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/document.svg\"></div>";
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign file-icon\" src=\"res/document.svg\"></div>";
         }
         
         html += '<div class="card-title truncate">' + row['properties']['name'] + '</div>';

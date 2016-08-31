@@ -111,14 +111,18 @@ if(isset($_GET['key'])){
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12 m4 l2">
-                        <img class="materialboxed" src="files/a5bb5e/original.jpg" id="info_thumb" alt="File preview" style="width:100%;" width="100%"/>
+                        <img class="materialboxed" src="" id="info_thumb" alt="File preview" style="width:100%;" width="100%"/>
                     </div>
                     <div class="col s12 m8 l10">
-                        <h4 id="info_name">original.jpg</h4>
+                        <h4 id="info_name"></h4>
                         <div class="row">
-                            <div class="col s12 l9">
+                            <div class="col s12 l6">
                                 <label for="info_permalink">Address</label>
                                 <input id="info_permalink" readonly value="" />
+                            </div>
+                            <div class="col s12 l3">
+                                <label for="info_date">Time uploaded</label>
+                                <input id="info_date" readonly value="" />
                             </div>
                             <div class="col s12 l3">
                                 <label for="info_type">MIME Type</label>
@@ -133,6 +137,11 @@ if(isset($_GET['key'])){
                             <div class="col s12 l3">
                                 <label for="info_size">File size</label>
                                 <input id="info_size" readonly value="" />
+                            </div>
+                            <div class="col s12 l1 offset-l11">
+                                <a href="delete.php?id=" id="delete_url">
+                                    <button class="btn red">Delete</button>
+                                </a>
                             </div>
                         </div>
                     </div>
