@@ -40,7 +40,7 @@ function rowCode(row){
         var html = '<div class="col s2 card z-depth-0" onclick="$(\'#infomodal\').openModal(); update_info(\'' + row['properties']['id'] +'\');">';
 
         if(row['properties']['type'].indexOf('image') != -1){
-            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + '.' + row['extension'] + '?width=150' + "\"></div>";
+            html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + '.' + row['extension'] + '?width=300' + "\"></div>";
         }else if(row['properties']['type'].indexOf('audio') != -1){
             html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"res/music_note.svg\"></div>";            
         }else if(row['properties']['type'].indexOf('video') != -1){

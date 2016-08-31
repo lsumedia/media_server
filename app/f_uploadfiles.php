@@ -45,6 +45,7 @@ class file_properties{
             "thumbnail" => "original." . $extension,
             "description" => $description,
             "extension" => $extension,
+            "timestamp" => time()
         ];
         
         return $properties;
