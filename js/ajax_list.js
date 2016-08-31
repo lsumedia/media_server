@@ -113,6 +113,8 @@ function list_change_page(listId,dataLocation,pageNumber){
         
 function list_search(listId,dataLocation,term){
         
+        console.log(term);
+        
         if(term.length == 0){
             list_change_page(listId,dataLocation,0);
             return;
@@ -127,7 +129,7 @@ function list_search(listId,dataLocation,term){
             for(var key in row){
                 if(key != 'onclick'){
                     if(row[key]){
-                        var content = row[key].toLowerCase();
+                        var content = row[key].toString().toLowerCase();
                         if(content.indexOf(term.toLowerCase()) != -1){
                            match = true;
                         }
@@ -147,8 +149,11 @@ function list_search(listId,dataLocation,term){
         //Load buttons
         var backbtn = document.getElementById(listId + '_back');
         var nextbtn = document.getElementById(listId + '_next');
-        backbtn.style.color = '#888';
-        nextbtn.style.color = '#888';
+        try{
+            backbtn.style.color = '#888';
+            nextbtn.style.color = '#888';
+        }catch(e){
+        }
 }
         
 function list_all(listId, dataLocation){ 
