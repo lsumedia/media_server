@@ -33,7 +33,7 @@ $dir_path = $root_dir . '/' . $id;
 //Generate properties.json file
 
 
-$properties = file_properties::generate_properties($_FILES['file'], $id, $_POST['description']);
+$properties = file_properties::generate_properties($_FILES['file'], $id, $_POST['description'], $_POST['title']);
 
 
 //Move file to new directory

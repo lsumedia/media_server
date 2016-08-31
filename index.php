@@ -90,6 +90,10 @@ if(isset($_GET['key'])){
                         </div>
                     </div>
                     <div class="input-field">
+                        <label for="upload_desc">Title</label>
+                        <input type="text" name="title" />
+                    </div>
+                    <div class="input-field">
                         <label for="upload_desc">Description</label>
                         <input type="text" name="description" />
                     </div>

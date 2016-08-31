@@ -32,19 +32,22 @@ class file_properties{
         
     }
     
-    static function generate_properties($file, $id, $description){
+    static function generate_properties($file, $id, $description, $title){
+        
+        if(strlen($title) < 1){ $title = $file['name']; }
         
         $extension = end(explode('.',$file['name']));
         
         $properties = [
             "id" => $id,
-            "name" => $file['name'],
+            "name" => $title,
             "size" => $file['size'],
             "type" => $file['type'],
             "original" => "original." . $extension,
             "thumbnail" => "original." . $extension,
             "description" => $description,
             "extension" => $extension,
+            "timestamp" => time(),
         ];
         
         return $properties;

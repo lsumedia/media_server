@@ -41,6 +41,7 @@ function update_info(id){
             size.value = data['size'] + ' bytes';
             description.value = data['description'];
             $('.materialboxed').materialbox();
+            $('#infomodal').openModal(); 
         }
     });
     
