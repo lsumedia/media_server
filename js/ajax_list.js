@@ -113,7 +113,7 @@ function list_change_page(listId,dataLocation,pageNumber){
         
 function list_search(listId,dataLocation,term){
         
-        console.log(term);
+        //console.log(term);
         
         if(term.length == 0){
             list_change_page(listId,dataLocation,0);
@@ -124,15 +124,13 @@ function list_search(listId,dataLocation,term){
         
         var html = "";
         for(var i=0; i < data.length; i++){
-            var row = data[i];
+            var row = data[i]['properties'];
             var match = false;
             for(var key in row){
-                if(key != 'onclick'){
-                    if(row[key]){
-                        var content = row[key].toString().toLowerCase();
-                        if(content.indexOf(term.toLowerCase()) != -1){
-                           match = true;
-                        }
+                if(row[key]){
+                    var content = row[key].toString().toLowerCase();
+                    if(content.indexOf(term.toLowerCase()) != -1){
+                       match = true;
                     }
                 }
             }

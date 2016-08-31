@@ -45,7 +45,7 @@ class ajax_list{
         $count = count($this->objects);
         echo "<div class=\"listtitle\">$this->title</div>", PHP_EOL;
         echo "<div class=\"row\">";
-        echo "<div class=\"col-lg-9 col-sm-12\"><input onkeyup=\"list_search('$this->id','$data_id',this.value);\" placeholder='Search' type='text' id='$search_id' class='form-control' /></div>";
+        echo "<div class=\"col-lg-9 col-sm-12\"><input onkeyup=\"list_search('$this->id','$data_id',this.value);\" placeholder='Search' type='text' id='$search_id' class='form-control input-field' /></div>";
         if($count > 50){
             $back; $next;
             $numpages = floor(($count-1) / 50 ) + 1;
