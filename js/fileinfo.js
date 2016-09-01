@@ -56,7 +56,7 @@ function update_info(id){
             
             if(data['type'].indexOf('image') != -1){
             //if(images.indexOf(data['extension']) == -1){
-                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                permalink.value = window.location.href + "files/" + id + "." + data['extension'];
                 thumb.src = 'files/' + id + '/' + data['original'];
                 thumb.style.display = 'block';
                 vid_preview.style.display = 'none';

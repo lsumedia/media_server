@@ -4,6 +4,9 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 */
+
+require_once('app/f_mobile_detect.php');
+
 $files_folder = 'files';
 $filename = $_GET['file'];
 
@@ -82,8 +85,17 @@ try{
             $image = $image->coalesceimages();
                
             $image = $image->deconstructimages();
-        }
+        }else{
        
+            $detect = new Mobile_Detect();
+
+            if($detect->isMobile()){
+                    $image->setImageCompression(imagick::COMPRESSION_JPEG); 
+                    $image->setImageCompressionQuality(85); 
+                    $image->stripImage(); 
+                    $output_content_type = 'image/jpeg';
+            }
+        }
     }
     //$image->adaptiveResizeImage(1024,768);
     //test

@@ -18,7 +18,7 @@ class authenticator{
         
         /* Prefix for session variables (Should be different for multiple sites 
          * on the same server & domain */
-        'session_prefix' => 'm_users',
+        'session_prefix' => 'file',
         
         /* (Optional) If set, users will be redirected to this address after login
         instead of the original requested page. Should be null if not used. */

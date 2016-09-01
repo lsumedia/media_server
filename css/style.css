@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Cameron
 */
 
+html{
+    overflow-y:scroll;
+}
+
 nav{
     background-color: 4a1863;
 }

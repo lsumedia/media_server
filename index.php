@@ -142,11 +142,17 @@ if(isset($_GET['key'])){
                                 <label for="info_size">File size</label>
                                 <input id="info_size" readonly value="" />
                             </div>
+                            <?php
+                            if($auth->server_check_permission('edit_media') == true){
+                            ?>
                             <div class="col s12 l1 offset-l11">
                                 <a href="delete.php?id=" id="delete_url">
                                     <button class="btn red">Delete</button>
                                 </a>
                             </div>
+                             <?php
+                             }
+                             ?>
                         </div>
                     </div>
                 </div>
