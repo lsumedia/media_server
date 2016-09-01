@@ -45,7 +45,7 @@ if(isset($_GET['key'])){
         <nav>
             <div class="nav-wrapper container white-text" >
                 <div class="brand-logo">
-                    <!-- <img src="res/media_reverse.png" /> -->
+                    <img src="res/media_reverse.png" />
                     <p>File Manager</p>
                 </div>
             </div>
@@ -112,8 +112,10 @@ if(isset($_GET['key'])){
         <div id="infomodal" class="modal bottom-sheet">
             <div class="modal-content">
                 <div class="row">
-                    <div class="col s12 m4 l2">
+                    <audio class="col s12" controls src="" style="display:none; width:100%" id="audio_preview"></audio>
+                    <div class="col s12 m12 l2">
                         <img class="materialboxed" src="" id="info_thumb" alt="File preview" style="width:100%;" width="100%"/>
+                        <video controls src="" style="display:none;" id="vid_preview" width="100%" height="auto"></video>
                     </div>
                     <div class="col s12 m8 l10">
                         <h4 id="info_name"></h4>

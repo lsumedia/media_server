@@ -54,3 +54,6 @@ a{
 .file-icon{
     height:70%;
 }
+.modal{
+   will-change: inherit !important;
+}

@@ -37,7 +37,7 @@ function rowCode(row){
 
         var id = row['properties']['id'];
 
-        var html = '<div class="col s2 card z-depth-0" onclick="update_info(\'' + row['properties']['id'] +'\');">';
+        var html = '<div class="col s4 m3 l2 card z-depth-0" onclick="update_info(\'' + row['properties']['id'] +'\');">';
 
         if(row['properties']['type'].indexOf('image') != -1){
             html += "<div class=\"card-image z-depth-1 black valign-wrapper\" style=\"height:130px;\"><img class=\"valign\" src=\"files/" + id + '.' + row['extension'] + '?width=300' + "\"></div>";

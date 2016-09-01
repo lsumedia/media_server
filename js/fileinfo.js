@@ -4,8 +4,26 @@
  * and open the template in the editor.
  */
 
+var current_id = null;
+
+function stop_media(){
+    //Video/audio preview elements
+  var vid_preview = document.getElementById('vid_preview');
+  var audio_preview = document.getElementById('audio_preview');
+  vid_preview.pause();
+  audio_preview.pause();
+}
+
+
 
 function update_info(id){
+    
+    if(id == current_id){
+        $('#infomodal').openModal(); 
+        return;
+    }
+    
+    current_id = id;
     
     var name = document.getElementById('info_name');
     var type = document.getElementById('info_type');
@@ -16,6 +34,10 @@ function update_info(id){
     var description = document.getElementById('info_desc');
     var date = document.getElementById('info_date');
     var delete_link = document.getElementById('delete_url');
+    
+    //Video/audio preview elements
+    var vid_preview = document.getElementById('vid_preview');
+    var audio_preview = document.getElementById('audio_preview');
     
     var images = ['jpg','jpeg','png','gif'];
     
@@ -29,14 +51,42 @@ function update_info(id){
             
             console.log(result);
             
+            vid_preview.src = '';
+            audio_preview.src = '';
             
-            if(images.indexOf(data['extension']) == -1){
+            if(data['type'].indexOf('image') != -1){
+            //if(images.indexOf(data['extension']) == -1){
                 permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
                 thumb.src = 'files/' + id + '/' + data['original'];
+                thumb.style.display = 'block';
+                vid_preview.style.display = 'none';
+                audio_preview.style.display = 'none';
+
+            }else if(data['type'].indexOf('audio') != -1){
+                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                thumb.src = '';
+                thumb.style.display = 'none';
+                thumb.style.display = 'none';
+                audio_preview.src = permalink.value;
+                audio_preview.load();
+                vid_preview.style.display = 'none';
+                audio_preview.style.display = 'block';
+            
+            }else if(data['type'].indexOf('video') != -1){
+                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                thumb.src = '';
+                thumb.style.display = 'none';
+                vid_preview.src = permalink.value;
+                vid_preview.load();
+                vid_preview.style.display = 'block';
+                audio_preview.style.display = 'none';
 
             }else{
                 permalink.value = window.location.href + "files/" + id + "." + data['extension'];
-                thumb.src = 'files/' + id + '/' + data['thumbnail'];
+                thumb.src = 'res/document.svg';
+                thumb.style.display = 'block';
+                vid_preview.style.display = 'none';
+                audio_preview.style.display = 'none';
             }
             type.value = data['type'];
             name.innerHTML = data['name'];
@@ -46,6 +96,9 @@ function update_info(id){
             delete_link.href = 'delete.php?id=' + data['id'];
             $('.materialboxed').materialbox();
             $('#infomodal').openModal(); 
+            $('.lean-overlay').click(function(){
+                stop_media();
+            });
         }
     });
     
