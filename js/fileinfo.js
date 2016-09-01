@@ -14,6 +14,17 @@ function stop_media(){
   audio_preview.pause();
 }
 
+function nice_size(bytes){
+    
+    if(bytes > 1000000000){
+        return (bytes / 1000000000).toString().substr(0,5) + ' GB';
+    }else if(bytes > 1000000){
+        return (bytes / 1000000).toString().substr(0,5) + ' MB';
+    }else if(bytes > 1000){
+        return (bytes / 1000).toString().substr(0,5) + ' KB';
+    }
+    return bytes + ' bytes';
+}
 
 
 function update_info(id){
@@ -88,9 +99,10 @@ function update_info(id){
                 vid_preview.style.display = 'none';
                 audio_preview.style.display = 'none';
             }
+            
             type.value = data['type'];
             name.innerHTML = data['name'];
-            size.value = data['size'] + ' bytes';
+            size.value = nice_size(data['size']);
             description.value = data['description'];
             date.value = data['date'];
             delete_link.href = 'delete.php?id=' + data['id'];

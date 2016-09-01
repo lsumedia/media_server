@@ -122,7 +122,7 @@ if(isset($_GET['key'])){
                         <div class="row">
                             <div class="col s12 l6">
                                 <label for="info_permalink">Address</label>
-                                <input id="info_permalink" readonly value="" />
+                                <input id="info_permalink" readonly value="" onclick="this.focus();this.select()" />
                             </div>
                             <div class="col s12 l3">
                                 <label for="info_date">Time uploaded</label>
