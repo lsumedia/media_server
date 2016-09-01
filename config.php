@@ -13,6 +13,6 @@ $video_formats = ['mp4', 'mov', 'avi', 'wmv', 'webm', 'oggv'];
 $banned_formats = ['php','exe','msi','cshtml'];
 
 $config = [
-    'require_auth' => false,
+    'require_auth' => true,
     'debug' => false,
 ];

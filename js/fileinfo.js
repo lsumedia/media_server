@@ -82,9 +82,9 @@ function update_info(id){
                 audio_preview.style.display = 'none';
 
             }else{
-                permalink.value = window.location.href + "files/" + id + "." + data['extension'];
-                thumb.src = 'res/document.svg';
-                thumb.style.display = 'block';
+                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                thumb.src = '';
+                thumb.style.display = 'none';
                 vid_preview.style.display = 'none';
                 audio_preview.style.display = 'none';
             }

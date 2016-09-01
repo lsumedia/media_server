@@ -112,7 +112,7 @@ if(isset($_GET['key'])){
         <div id="infomodal" class="modal bottom-sheet">
             <div class="modal-content">
                 <div class="row">
-                    <audio class="col s12" controls src="" style="display:none; width:100%" id="audio_preview"></audio>
+                    <audio class="col s12" controls src="" style="display:none; width:100%; margin-bottom:24px;" id="audio_preview"></audio>
                     <div class="col s12 m12 l2">
                         <img class="materialboxed" src="" id="info_thumb" alt="File preview" style="width:100%;" width="100%"/>
                         <video controls src="" style="display:none;" id="vid_preview" width="100%" height="auto"></video>
@@ -157,7 +157,11 @@ if(isset($_GET['key'])){
         </div>
             
 
-        <?php $auth->status_bug(); ?>
+        <?php 
+        if($config['require_auth'] == true){
+            $auth->status_bug(); 
+        }
+        ?>
     </body>
 </html>
 
