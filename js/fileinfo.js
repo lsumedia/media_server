@@ -46,6 +46,7 @@ function update_info(id){
     var date = document.getElementById('info_date');
     var delete_link = document.getElementById('delete_url');
     var choose_button = document.getElementById('choose_button');
+    var optimise = document.getElementById('optimise_check');
     
     //Video/audio preview elements
     var vid_preview = document.getElementById('vid_preview');
@@ -113,7 +114,8 @@ function update_info(id){
             }
             
             try{
-                var function_name = 'return pick_file(\'' + permalink.value + '\');';
+               
+                var function_name = 'return pick_file(\'' + permalink.value + '?width=1920\');';
                 choose_button.setAttribute('onclick',function_name);
             }catch(e){
                 console.log(e);

@@ -66,10 +66,14 @@ fclose($prop_handle);
 
 $final_path = 'files/' . $id . '/original.' . $properties['extension'];
 if(move_uploaded_file($_FILES["file"]["tmp_name"], $final_path)){
-    header('location:.');
-    die();
+    if(isset($_GET['popup'])){
+        
+        header('location:./popup.php');
+        
+    }else{
+        header('location:.');
+    }
 }
-
 //Generate thumbnail
 
 //if image: Generate additional sizes

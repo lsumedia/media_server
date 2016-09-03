@@ -38,6 +38,10 @@ if(isset($_GET['key'])){
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         
+        <script>
+            var root_url = '<?= $config['root_url'] ?>';
+        </script>
+        
         <?php js_import(); ?>
     </head>
     <body>

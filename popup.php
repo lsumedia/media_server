@@ -10,11 +10,11 @@ if(isset($_GET['debug']) || $config['debug'] == true){
 require('init.php');
 
 if($config['require_auth'] == true){
-    $auth = new authenticator();
+    //$auth = new authenticator();
 }
 
 if(isset($_GET['key'])){
-    header('location:.');   
+    header('location:./popup.php');   
 }
 
 ?>
@@ -73,7 +73,7 @@ if(isset($_GET['key'])){
         
         <div id="uploadmodal" class="modal ">
             <div class="modal-content">
-                <form action="upload.php" method="POST" enctype="multipart/form-data" id="upload_form">
+                <form action="upload.php?popup" method="POST" enctype="multipart/form-data" id="upload_form">
                     <div class="file-field input-field">    
                         <div class="btn">
                             <span>File</span>
@@ -109,7 +109,7 @@ if(isset($_GET['key'])){
                         <img class="materialboxed hide-on-small-and-down" src="" id="info_thumb" alt="File preview" width="100%"/>
                         <video controls src="" style="display:none;" id="vid_preview" width="100%" height="auto"></video>
                     </div>
-                    <div class="col s12 m8 l10">
+                    <div class="col s12 m12 l10">
                         <h4 id="info_name"></h4>
                         <div class="row">
                             <div class="col s12 l6">
@@ -134,8 +134,12 @@ if(isset($_GET['key'])){
                                 <label for="info_size">File size</label>
                                 <input id="info_size" readonly value="" />
                             </div>
+                             <div class="col s6 l4">
+                                 <input id="optimise_check" type="checkbox" checked="checked"/>
+                                <label for="optimise_check">Optimise</label>
+                             </div>
                             
-                            <div class="col s12 l1 offset-l11">
+                            <div class="col s6 l1 offset-l11">
                                     <button class="btn red" id="choose_button">Select</button>
                             </div>
                             
