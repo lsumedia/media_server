@@ -33,6 +33,11 @@ if(isset($_GET['key'])){
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         
+        <script>
+            var root_url = '<?= $config['root_url'] ?>';
+            var result_id = '<?= $_GET['result_id'] ?>';
+        </script>
+        
         <?php js_import(); ?>
     </head>
     <body>
@@ -131,7 +136,7 @@ if(isset($_GET['key'])){
                             </div>
                             
                             <div class="col s12 l1 offset-l11">
-                                    <button class="btn red">Select</button>
+                                    <button class="btn red" id="choose_button">Select</button>
                             </div>
                             
                         </div>

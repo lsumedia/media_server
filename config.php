@@ -15,4 +15,7 @@ $banned_formats = ['php','exe','msi','cshtml'];
 $config = [
     'require_auth' => true,
     'debug' => false,
+    
+    /* Root URL including trailing slash */
+    'root_url' => 'http://grovestreet.me/media_server/',
 ];

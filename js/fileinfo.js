@@ -45,6 +45,7 @@ function update_info(id){
     var description = document.getElementById('info_desc');
     var date = document.getElementById('info_date');
     var delete_link = document.getElementById('delete_url');
+    var choose_button = document.getElementById('choose_button');
     
     //Video/audio preview elements
     var vid_preview = document.getElementById('vid_preview');
@@ -67,14 +68,14 @@ function update_info(id){
             
             if(data['type'].indexOf('image') != -1){
             //if(images.indexOf(data['extension']) == -1){
-                permalink.value = window.location.href + "files/" + id + "." + data['extension'];
+                permalink.value = root_url + "files/" + id + "." + data['extension'];
                 thumb.src = 'files/' + id + '/' + data['original'];
                 thumb.style.display = 'block';
                 vid_preview.style.display = 'none';
                 audio_preview.style.display = 'none';
 
             }else if(data['type'].indexOf('audio') != -1){
-                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                permalink.value = root_url + "files/" + id + "/original." + data['extension'];
                 thumb.src = '';
                 thumb.style.display = 'none';
                 thumb.style.display = 'none';
@@ -84,7 +85,7 @@ function update_info(id){
                 audio_preview.style.display = 'block';
             
             }else if(data['type'].indexOf('video') != -1){
-                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                permalink.value = root_url + "files/" + id + "/original." + data['extension'];
                 thumb.src = '';
                 thumb.style.display = 'none';
                 vid_preview.src = permalink.value;
@@ -93,7 +94,7 @@ function update_info(id){
                 audio_preview.style.display = 'none';
 
             }else{
-                permalink.value = window.location.href + "files/" + id + "/original." + data['extension'];
+                permalink.value = root_url + "files/" + id + "/original." + data['extension'];
                 thumb.src = '';
                 thumb.style.display = 'none';
                 vid_preview.style.display = 'none';
@@ -110,6 +111,13 @@ function update_info(id){
             }catch(e){
                 console.log(e);
             }
+            
+            try{
+                var function_name = 'return pick_file(\'' + permalink.value + '\');';
+                choose_button.setAttribute('onclick',function_name);
+            }catch(e){
+                console.log(e);
+            }
             $('.materialboxed').materialbox();
             $('#infomodal').openModal(); 
             $('.lean-overlay').click(function(){
@@ -118,4 +126,15 @@ function update_info(id){
         }
     });
     
+}
+
+function pick_file(url){
+     try {
+        window.opener.handle_window_close(result_id,url);
+    }
+    catch (err) {
+        console.log(err);
+    }
+    window.close();
+    return false;
 }
