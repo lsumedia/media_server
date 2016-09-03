@@ -100,8 +100,8 @@ if(isset($_GET['key'])){
             <div class="modal-content">
                 <div class="row">
                     <audio class="col s12" controls src="" style="display:none; width:100%; margin-bottom:24px;" id="audio_preview"></audio>
-                    <div class="col s12 m12 l2">
-                        <img class="materialboxed" src="" id="info_thumb" alt="File preview" style="width:100%;" width="100%"/>
+                    <div class="col s12 m12 l2 hide-on-med-and-down">
+                        <img class="materialboxed hide-on-small-and-down" src="" id="info_thumb" alt="File preview" width="100%"/>
                         <video controls src="" style="display:none;" id="vid_preview" width="100%" height="auto"></video>
                     </div>
                     <div class="col s12 m8 l10">

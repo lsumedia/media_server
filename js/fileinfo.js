@@ -105,7 +105,11 @@ function update_info(id){
             size.value = nice_size(data['size']);
             description.value = data['description'];
             date.value = data['date'];
-            delete_link.href = 'delete.php?id=' + data['id'];
+            try{
+                delete_link.href = 'delete.php?id=' + data['id'];
+            }catch(e){
+                console.log(e);
+            }
             $('.materialboxed').materialbox();
             $('#infomodal').openModal(); 
             $('.lean-overlay').click(function(){
