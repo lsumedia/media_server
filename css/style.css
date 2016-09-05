@@ -20,8 +20,20 @@ nav{
     margin-top:5em;
 }
 
+#popup-main{
+    margin-top:2em;
+}
+
 a{
     color:inherit;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
 }
 
 .page_icon{

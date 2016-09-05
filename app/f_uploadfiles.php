@@ -41,6 +41,7 @@ class file_properties{
         $properties = [
             "id" => $id,
             "name" => $title,
+            "original_name" => $file['name'],
             "size" => $file['size'],
             "type" => $file['type'],
             "original" => "original." . $extension,

@@ -44,7 +44,8 @@ function update_info(id){
     var size = document.getElementById('info_size');
     var description = document.getElementById('info_desc');
     var date = document.getElementById('info_date');
-    var delete_link = document.getElementById('delete_url');
+    var download_link = document.getElementById('download_url');
+    var delete_link = document.getElementById('delete_button');
     var choose_button = document.getElementById('choose_button');
     var optimise = document.getElementById('optimise_check');
     
@@ -108,14 +109,16 @@ function update_info(id){
             description.value = data['description'];
             date.value = data['date'];
             try{
-                delete_link.href = 'delete.php?id=' + data['id'];
+                download_link.href = permalink.value;
+                download_link.download = data['name'];
+                delete_link.setAttribute('onclick', 'delete_file(\'' + data['id'] + '\');');
             }catch(e){
                 console.log(e);
             }
             
             try{
                
-                var function_name = 'return pick_file(\'' + permalink.value + '?width=1920\');';
+                var function_name = 'return pick_file(\'' + permalink.value + '\');';
                 choose_button.setAttribute('onclick',function_name);
             }catch(e){
                 console.log(e);
@@ -131,7 +134,13 @@ function update_info(id){
 }
 
 function pick_file(url){
-     try {
+    var optimise = document.getElementById('optimise_check');
+    
+    if(optimise.checked){
+        url += '?width=1920';
+    }
+    
+    try {
         window.opener.handle_window_close(result_id,url);
     }
     catch (err) {
@@ -139,4 +148,12 @@ function pick_file(url){
     }
     window.close();
     return false;
+}
+
+function delete_file(id){
+    
+    if(confirm('Are you sure you want to delete this file? This will break any links to it!')){
+        window.location.href = './delete.php?id=' + id;
+    }
+    
 }

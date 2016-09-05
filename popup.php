@@ -42,11 +42,10 @@ if(isset($_GET['key'])){
     </head>
     <body>
         
-        <main id="main">
+        <main id="popup-main">
             <div class="container">
                 <div class="row">
                     <div class="col s12">
-                        <button class="btn-flat">Choose files</button>
                         <button class="btn" id="uploadbtn" onclick="$('#uploadmodal').openModal();">Add files</button>
                     </div>
                 </div>
@@ -75,7 +74,7 @@ if(isset($_GET['key'])){
             <div class="modal-content">
                 <form action="upload.php?popup" method="POST" enctype="multipart/form-data" id="upload_form">
                     <div class="file-field input-field">    
-                        <div class="btn">
+                        <div class="btn btn-flat">
                             <span>File</span>
                             <input type="file" name="file">
                         </div>
@@ -101,7 +100,7 @@ if(isset($_GET['key'])){
             </div>
         </div>
         
-        <div id="infomodal" class="modal bottom-sheet">
+        <div id="infomodal" class="modal">
             <div class="modal-content">
                 <div class="row">
                     <audio class="col s12" controls src="" style="display:none; width:100%; margin-bottom:24px;" id="audio_preview"></audio>
@@ -110,7 +109,7 @@ if(isset($_GET['key'])){
                         <video controls src="" style="display:none;" id="vid_preview" width="100%" height="auto"></video>
                     </div>
                     <div class="col s12 m12 l10">
-                        <h4 id="info_name"></h4>
+                        <h4 id="info_name" class="truncate"></h4>
                         <div class="row">
                             <div class="col s12 l6">
                                 <label for="info_permalink">Address</label>
@@ -135,12 +134,18 @@ if(isset($_GET['key'])){
                                 <input id="info_size" readonly value="" />
                             </div>
                              <div class="col s6 l4">
-                                 <input id="optimise_check" type="checkbox" checked="checked"/>
-                                <label for="optimise_check">Optimise</label>
+                                <div class="switch">
+                                    <label>
+                                      Full-res
+                                      <input type="checkbox" id="optimise_check" checked="checked">
+                                      <span class="lever"></span>
+                                      Optimised
+                                    </label>
+                                  </div>
                              </div>
                             
-                            <div class="col s6 l1 offset-l11">
-                                    <button class="btn red" id="choose_button">Select</button>
+                            <div class="col s6 l8">
+                                    <button class="btn red right" id="choose_button">Select</button>
                             </div>
                             
                         </div>
