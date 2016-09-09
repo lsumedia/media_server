@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 if(isset($_GET['debug']) || $config['debug'] == true){
     ini_set("display_errors", 1);
     ini_set("track_errors", 1);
@@ -45,7 +46,6 @@ if(isset($_GET['key'])){
         <?php js_import(); ?>
     </head>
     <body>
-        
         <nav>
             <div class="nav-wrapper container white-text" >
                 <div class="brand-logo">

@@ -118,7 +118,7 @@ function update_info(id){
             
             try{
                
-                var function_name = 'return pick_file(\'' + permalink.value + '\');';
+                var function_name = 'return pick_file(\'' + permalink.value + '\',\'' + data['type'] + '\');';
                 choose_button.setAttribute('onclick',function_name);
             }catch(e){
                 console.log(e);
@@ -133,10 +133,10 @@ function update_info(id){
     
 }
 
-function pick_file(url){
+function pick_file(url, type){
     var optimise = document.getElementById('optimise_check');
     
-    if(optimise.checked){
+    if(optimise.checked && type.indexOf('image') !== -1){
         url += '?width=1920';
     }
     
